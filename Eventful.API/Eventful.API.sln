@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eventful.API", "Eventful.API\Eventful.API.csproj", "{2B40DA31-53D5-4798-B19F-06370B561E66}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Event", "..\Shared Components\EventManager\Event.csproj", "{6A15FC11-04D8-4915-98DC-BD299788BFA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{AF8590C8-EDFE-4EC2-B735-5CC0F16A36F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B40DA31-53D5-4798-B19F-06370B561E66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B40DA31-53D5-4798-B19F-06370B561E66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B40DA31-53D5-4798-B19F-06370B561E66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B40DA31-53D5-4798-B19F-06370B561E66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A15FC11-04D8-4915-98DC-BD299788BFA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A15FC11-04D8-4915-98DC-BD299788BFA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A15FC11-04D8-4915-98DC-BD299788BFA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A15FC11-04D8-4915-98DC-BD299788BFA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6A15FC11-04D8-4915-98DC-BD299788BFA0} = {AF8590C8-EDFE-4EC2-B735-5CC0F16A36F6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29615F04-932C-4791-B6D3-1F1867432C57}
+	EndGlobalSection
+EndGlobal
