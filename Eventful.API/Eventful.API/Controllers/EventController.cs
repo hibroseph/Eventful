@@ -26,9 +26,9 @@ namespace Eventful.API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<string> HelloWorld()
+        public string HelloWorld()
         {
-            return "Hello World";
+            return "Hello World. Your API is working correctly.";
         }
     }
 }
