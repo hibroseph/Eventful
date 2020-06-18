@@ -1,6 +1,20 @@
 import React, { useState } from "react";
-import { Box, Button, Collapsible, Heading, Grommet, Layer, ResponsiveContext } from "grommet";
-import { Home, FormClose, Notification } from "grommet-icons";
+import { Anchor, Box, Button, Collapsible, Footer, Main, Heading, Grommet, Layer, Text, ResponsiveContext } from "grommet";
+import { FormClose, Notification } from "grommet-icons";
+import Event from "./Components/Event";
+
+const SampleEvents = [
+  { title: "Porter Park Frisbee", description: "Come and play some ultimate frisbee. We are hoping to have atleast 5 people." },
+  { title: "Hackathon @ LabStats", description: "Make sure you come and bring a laptop. There will be some good prizes provided by Daniel" },
+  {
+    title: "Sleepover w/ sexy ladies",
+    description: "There will be a sleep over with some sexy ladies at 461 N Water in Idaho Falls. Make sure you come modest",
+  },
+  {
+    title: "Hello Mate",
+    description: "Hopefully this shows up lol",
+  },
+];
 
 const theme = {
   global: {
@@ -31,6 +45,7 @@ const AppBar = (props) => (
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
+
   return (
     <Grommet theme={theme} full>
       <ResponsiveContext.Consumer>
@@ -39,7 +54,7 @@ function App() {
             <AppBar>
               Eventful
               <Heading level="3" margin="none">
-                My App
+                Feed
               </Heading>
               <Box direction="row">
                 <Button primary label="Log In" />
@@ -52,8 +67,10 @@ function App() {
               </Box>
             </AppBar>
             <Box direction="row" flex overflow={{ horizontal: "hidden" }}>
-              <Box flex align="center" justify="center">
-                Welcome to Eventful. Here is your feed
+              <Box flex overflow="auto" align="center">
+                {SampleEvents.map((e) => {
+                  return <Event {...e}></Event>;
+                })}
               </Box>
               {!showSidebar || size !== "small" ? (
                 <Collapsible direction="horizontal" open={showSidebar}>
@@ -72,6 +89,10 @@ function App() {
                 </Layer>
               )}
             </Box>
+            <Footer background="light-2" pad="small">
+              <Text>Copyright</Text>
+              <Anchor label="About" />
+            </Footer>
           </Box>
         )}
       </ResponsiveContext.Consumer>
