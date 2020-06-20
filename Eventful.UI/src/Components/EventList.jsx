@@ -12,11 +12,12 @@ const CardList = styled.div`
 const EventList = (props) => (
   <CardList>
     {props.events.map((event) => (
-      <Event {...event}></Event>
+      <Event key={event.id} {...event}></Event>
     ))}
   </CardList>
 );
 
 export default connect((state) => {
+  console.log("new state in connect");
   return state.events;
 })(EventList);

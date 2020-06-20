@@ -1,5 +1,6 @@
 import { reducer } from "redux";
 import { GET_EVENT, POST_EVENT } from "../actionTypes";
+import { CLIENT_RENEG_LIMIT } from "tls";
 
 const initialState = {
   events: [
@@ -9,6 +10,7 @@ const initialState = {
       description: "Come and play some ultimate frisbee. We are hoping to have atleast 5 people.",
     },
     {
+      id: 5,
       title: "Hackathon @ LabStats",
       description: "Make sure you come and bring a laptop. There will be some good prizes provided by Daniel",
     },
@@ -34,6 +36,8 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case GET_EVENT:
       return state;
+    case POST_EVENT:
+      return Object.assign({}, state, { events: [...state.events, action.payload] });
     default:
       return state;
   }
