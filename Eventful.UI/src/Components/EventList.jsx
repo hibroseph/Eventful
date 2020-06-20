@@ -1,6 +1,7 @@
 import React from "react";
 import Event from "./Event";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 const CardList = styled.div`
   display: flex;
@@ -15,4 +16,7 @@ const EventList = (props) => (
     ))}
   </CardList>
 );
-export default EventList;
+
+export default connect((state) => {
+  return state.events;
+})(EventList);
