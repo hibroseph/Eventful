@@ -18,6 +18,8 @@ namespace Eventful.API
 {
 	public class Startup
 	{
+		const string _localHostCorsPolicyName = "LocalHostCorsPolicyName";
+
 		public Startup( IConfiguration configuration )
 		{
 			Configuration = configuration;
@@ -29,6 +31,20 @@ namespace Eventful.API
 		public void ConfigureServices( IServiceCollection services )
 		{
 			services.AddControllers();
+
+			services.AddCors( options =>
+			 {
+
+				 options.AddPolicy( _localHostCorsPolicyName, builder =>
+				  {
+					  builder.WithOrigins( "http://localhost:3000/", 
+						  "http://localhost:3000",
+						  "https://localhost:3000/",
+						  "https://localhost:3000" )
+					  .AllowAnyHeader()
+					  .AllowAnyMethod();
+				  } );
+			 } );
 
 			IEventManagerRepository eventRepository = new EventManagerRepository();
 			IEventManager eventManager = new EventManager( eventRepository );
@@ -49,6 +65,8 @@ namespace Eventful.API
 			app.UseRouting();
 
 			app.UseAuthorization();
+
+			app.UseCors( _localHostCorsPolicyName );
 
 			app.UseEndpoints( endpoints =>
 			 {

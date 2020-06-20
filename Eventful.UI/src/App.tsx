@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import EventList from "./Components/EventList";
 import Nav from "./Components/Nav";
 import Footer from "./Components/Footer";
 import { connect } from "react-redux";
 import { ThemeProvider } from "styled-components";
-import { postEvent } from "./Redux/actions";
+import { postEvent } from "./Redux/Events/actions";
 
 const theme = {
   primary: "#227C9D",
