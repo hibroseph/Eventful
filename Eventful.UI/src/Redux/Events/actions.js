@@ -45,7 +45,7 @@ export const postEventPending = () => ({
 
 export const postEventSuccess = (event) => ({
   type: POST_EVENT_SUCCESS,
-  event: event,
+  newEvent: event,
 });
 
 export const postEventError = (error) => ({

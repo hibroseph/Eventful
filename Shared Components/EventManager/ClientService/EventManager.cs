@@ -15,8 +15,12 @@ namespace Eventful.Event.ClientService
 			_repository = eventManagerRepository;
 		}
 
-		public Task CreateEventAsync(Common.Event @event)
+		public Task<Common.Event> CreateEventAsync(Common.Event @event)
 		{
+			if (@event.Id == Guid.Empty || @event.Id == null)
+			{
+				@event.Id = Guid.NewGuid();
+			}
 			try
 			{
 				_repository.CreateEventAsync( @event );
@@ -26,7 +30,7 @@ namespace Eventful.Event.ClientService
 				// TODO: Add exception logging
 			}
 
-			return Task.CompletedTask;
+			return Task.FromResult(@event);
 		}
 
 		public Task DeleteEventAsync(Guid eventId)

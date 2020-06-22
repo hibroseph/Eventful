@@ -27,19 +27,18 @@ export default function (state = initialState, action) {
         events: action.events,
       };
     case FETCH_EVENTS_ERROR:
+      console.time("there was an error");
       return {
         ...state,
         fetchPending: false,
         fetchError: action.error,
       };
     case POST_EVENT_SUCCESS:
+      console.log(action.newEvent);
       return {
         ...state,
         postPending: false,
-        events: {
-          ...state,
-          events: [action.event],
-        },
+        events: [...state.events, action.newEvent],
       };
     case POST_EVENT_PENDING:
       return {

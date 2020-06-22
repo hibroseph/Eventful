@@ -41,9 +41,6 @@ class CreateEvent extends Component {
     // This is to not have the form reload the page
     e.preventDefault();
 
-    console.log("The current state");
-    console.log(this.state);
-
     // Post event to redux to send to the api
     this.props.postEvent(this.state);
 

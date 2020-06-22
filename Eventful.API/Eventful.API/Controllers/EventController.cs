@@ -31,14 +31,12 @@ namespace Eventful.API.Controllers
         {
             try
             {
-                await _eventManager.CreateEventAsync( @event );
+                return Ok(await _eventManager.CreateEventAsync( @event ));
             } catch (Exception)
             {
                 // TODO: Add exception logging
                 return StatusCode( 500 );
             }
-
-            return Ok();
         }
 
 

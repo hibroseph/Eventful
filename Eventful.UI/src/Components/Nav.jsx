@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Input } from "../Elements/styled-elements";
+
 const NavBar = styled.div`
   display: flex;
   justify-content: space-between;
@@ -20,7 +21,7 @@ const NavBarItem = styled.div`
   font-size: 20px;
 `;
 
-const Nav = (props) => (
+const Nav = () => (
   <NavBar>
     <SubNavBar>
       <NavBarItem>Eventful</NavBarItem>

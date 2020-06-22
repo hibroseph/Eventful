@@ -6,6 +6,6 @@ namespace Eventful.Event.Common
 	public interface IEventManager
 	{
 		Task<List<Event>> GetAllEventsAsync();
-		Task CreateEventAsync( Common.Event @event );
+		Task<Event> CreateEventAsync( Event @event );
 	}
 }
