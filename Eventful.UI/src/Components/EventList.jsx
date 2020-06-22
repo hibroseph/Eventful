@@ -17,6 +17,7 @@ class EventList extends Component {
   componentDidMount() {
     this.props.fetchEvents();
   }
+
   render() {
     return (
       <CardList>

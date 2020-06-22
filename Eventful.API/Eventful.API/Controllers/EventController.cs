@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Threading.Tasks;
 using Eventful.Event.Common;
 using Microsoft.AspNetCore.Http;
@@ -24,6 +25,22 @@ namespace Eventful.API.Controllers
         {
             return Ok( await _eventManager.GetAllEventsAsync());
         }
+
+        [HttpPost]
+        public async Task<IActionResult> PostEvent([FromBody] Event.Common.Event @event)
+        {
+            try
+            {
+                await _eventManager.CreateEventAsync( @event );
+            } catch (Exception)
+            {
+                // TODO: Add exception logging
+                return StatusCode( 500 );
+            }
+
+            return Ok();
+        }
+
 
         [HttpGet]
         public string HelloWorld()

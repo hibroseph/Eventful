@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Card = styled.div`
   border-radius: 10px;
   width: 500px;
-  height: 200px;
   box-shadow: 10px 14px 39px -32px rgba(0, 0, 0, 0.75);
   box-sizing: border-box;
   margin: 10px;

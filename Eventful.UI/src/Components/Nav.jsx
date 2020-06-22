@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { Input } from "../Elements/styled-elements";
 const NavBar = styled.div`
   display: flex;
   justify-content: space-between;
@@ -11,28 +11,22 @@ const NavBar = styled.div`
 const SubNavBar = styled.div`
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 `;
 
 const NavBarItem = styled.div`
   color: ${(props) => props.theme.text};
-  padding: 20px;
-  font-size: 30px;
-`;
-
-const NavBarInput = styled.input`
-  height: 28px;
-  border-radius: 5px;
-  outline: none;
-  border: none;
+  padding: 15px;
+  font-size: 20px;
 `;
 
 const Nav = (props) => (
   <NavBar>
-    <NavBarItem>Eventful</NavBarItem>
     <SubNavBar>
-      <NavBarItem>
-        <NavBarInput placeholder="Search"></NavBarInput>
-      </NavBarItem>
+      <NavBarItem>Eventful</NavBarItem>
+    </SubNavBar>
+    <SubNavBar>
+      <NavBarItem>{/* <Input placeholder="Search"></Input> */}</NavBarItem>
       <NavBarItem>Login</NavBarItem>
     </SubNavBar>
   </NavBar>

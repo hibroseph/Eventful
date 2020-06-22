@@ -5,6 +5,8 @@ import Footer from "./Components/Footer";
 import { connect } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { postEvent } from "./Redux/Events/actions";
+import CreateEvent from "./Components/CreateEvent";
+import styled from "styled-components";
 
 const theme = {
   primary: "#227C9D",
@@ -13,18 +15,20 @@ const theme = {
   text: "#fef9ef",
 };
 
+const MainContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 function App(props) {
   return (
     <ThemeProvider theme={theme}>
       <Nav></Nav>
-      <button
-        onClick={() => {
-          props.postEvent({ title: "New Post", description: "New Description" });
-        }}
-      >
-        Post Event
-      </button>
-      <EventList></EventList>
+      <MainContent>
+        <CreateEvent></CreateEvent>
+        <EventList></EventList>
+      </MainContent>
       <Footer></Footer>
     </ThemeProvider>
   );
