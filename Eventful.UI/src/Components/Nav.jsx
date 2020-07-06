@@ -1,18 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import { Input } from "../Elements/styled-elements";
+import { Link } from "react-router-dom";
 
 const NavBar = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   background-color: ${(props) => props.theme.primary};
+  text-decoration: none;
 `;
 
 const SubNavBar = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  text-decoration: none;
 `;
 
 const NavBarItem = styled.div`
@@ -21,14 +23,21 @@ const NavBarItem = styled.div`
   font-size: 20px;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 const Nav = () => (
   <NavBar>
     <SubNavBar>
-      <NavBarItem>Eventful</NavBarItem>
+      <StyledLink to="/">
+        <NavBarItem>Eventful</NavBarItem>
+      </StyledLink>
     </SubNavBar>
     <SubNavBar>
       <NavBarItem>{/* <Input placeholder="Search"></Input> */}</NavBarItem>
-      <NavBarItem>Login</NavBarItem>
+      <StyledLink to="/login">
+        <NavBarItem>Login</NavBarItem>
+      </StyledLink>
     </SubNavBar>
   </NavBar>
 );

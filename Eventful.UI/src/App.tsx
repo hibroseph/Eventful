@@ -5,7 +5,10 @@ import Footer from "./Components/Footer";
 import { connect } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { postEvent } from "./Redux/Events/actions";
+import { getEventFetchStatus } from "./Redux/Reducers/eventsReducer";
 import CreateEvent from "./Components/CreateEvent";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 import styled from "styled-components";
 
 const theme = {
@@ -24,14 +27,31 @@ const MainContent = styled.div`
 function App(props) {
   return (
     <ThemeProvider theme={theme}>
-      <Nav></Nav>
-      <MainContent>
-        <CreateEvent></CreateEvent>
-        <EventList></EventList>
-      </MainContent>
-      <Footer></Footer>
+      <Router>
+        <Nav></Nav>
+        <Switch>
+          <Route path="/login">
+            <h2>Login </h2>
+          </Route>
+          <Route path="/">
+            <MainContent>
+              <CreateEvent></CreateEvent>
+              {props.error && <p>There was an error while fetching the events</p>}
+              {props.pending && <p>We are fetching your events</p>}
+              <EventList></EventList>
+            </MainContent>
+          </Route>
+        </Switch>
+        <Footer></Footer>
+      </Router>
     </ThemeProvider>
   );
 }
 
-export default connect(null, { postEvent })(App);
+export default connect(
+  (state) => {
+    console.log(state);
+    return getEventFetchStatus(state);
+  },
+  { postEvent }
+)(App);

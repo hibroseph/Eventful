@@ -11,6 +11,14 @@ import {
 
 const initialState = {
   events: [],
+  fetch: {
+    pending: false,
+    error: false,
+  },
+  post: {
+    pending: false,
+    error: false,
+  },
 };
 
 export default function (state = initialState, action) {
@@ -18,38 +26,50 @@ export default function (state = initialState, action) {
     case FETCH_EVENTS_PENDING:
       return {
         ...state,
-        fetchPending: true,
+        fetch: { pending: true },
       };
     case FETCH_EVENTS_SUCCESS:
       return {
         ...state,
-        fetchPending: false,
+        fetch: {
+          pending: false,
+          error: false,
+        },
         events: action.events,
       };
     case FETCH_EVENTS_ERROR:
-      console.time("there was an error");
+      console.log("there was an error");
       return {
         ...state,
-        fetchPending: false,
-        fetchError: action.error,
+        fetch: {
+          pending: false,
+          error: true,
+        },
       };
     case POST_EVENT_SUCCESS:
       console.log(action.newEvent);
       return {
         ...state,
-        postPending: false,
+        post: {
+          pending: false,
+          error: false,
+        },
         events: [...state.events, action.newEvent],
       };
     case POST_EVENT_PENDING:
       return {
         ...state,
-        postPending: true,
+        post: {
+          pending: true,
+        },
       };
     case POST_EVENT_ERROR:
       return {
         ...state,
-        postPending: false,
-        postError: action.error,
+        post: {
+          pending: false,
+          error: true,
+        },
       };
     case GET_EVENTS:
       return state;
@@ -63,3 +83,4 @@ export default function (state = initialState, action) {
 export const getEvents = (state) => state.events;
 export const getFetchLoading = (state) => state.fetchPending;
 export const getPostLoading = (state) => state.postPending;
+export const getEventFetchStatus = (state) => state.events.fetch;

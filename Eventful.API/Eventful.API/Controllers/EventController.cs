@@ -23,7 +23,7 @@ namespace Eventful.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetEvents()
         {
-            return Ok( await _eventManager.GetAllEventsAsync());
+            return Ok(await _eventManager.GetAllEventsAsync());
         }
 
         [HttpPost]
@@ -31,11 +31,12 @@ namespace Eventful.API.Controllers
         {
             try
             {
-                return Ok(await _eventManager.CreateEventAsync( @event ));
-            } catch (Exception)
+                return Ok(await _eventManager.CreateEventAsync(@event));
+            }
+            catch (Exception)
             {
                 // TODO: Add exception logging
-                return StatusCode( 500 );
+                return StatusCode(500);
             }
         }
 
